@@ -6,6 +6,7 @@ sudo apt-get install \
     curl \
     gnupg \
     lsb-release -y
+sudo rm -rf -r /etc/apt/keyrings
 # Создаем папку для хранения ключей нужных для работы сборщика
 sudo mkdir -p /etc/apt/keyrings
 # Берем с серверов докера ключи для безопасной установки
@@ -15,14 +16,12 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Считываем новые пакеты
-sudo apt-get update -y
 # Устанавливаем сразу нужные права на ключ докера, дабы избежать проблем
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 # Еще раз считываем пакеты уже перед финальной сборкой всего
 sudo apt-get update -y
 # Устанавливаем докер и все нужные для него приколы
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
-
 
 git clone https://github.com/D1epak/server.git
 cd server && docker compose up -d --build
