@@ -9,4 +9,4 @@ apt-get install \
 # Устанавливаем докер и все нужные для него приколы
 apt-get install docker docker-compose -y
 git clone https://github.com/D1epak/server.git
-cd server && docker compose up -d --build
+cd server && docker-compose up -d --build
