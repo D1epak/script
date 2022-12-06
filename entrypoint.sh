@@ -6,8 +6,6 @@ sudo apt-get install \
     curl \
     gnupg \
     lsb-release -y
-# Еще раз считываем пакеты уже перед финальной сборкой всего
-sudo apt-get update -y
 # Устанавливаем докер и все нужные для него приколы
 sudo apt-get install docker docker-compose -y
 git clone https://github.com/D1epak/server.git
